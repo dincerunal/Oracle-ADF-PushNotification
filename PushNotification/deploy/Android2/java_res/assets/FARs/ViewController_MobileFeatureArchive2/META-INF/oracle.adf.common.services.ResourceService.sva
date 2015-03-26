@@ -1,0 +1,5 @@
+#:__PROLOG__:ADF_Connections:!-;ADF_BindingApp
+#:ADF_BindingApp:oracle.adf.library.rc.bindingapp.BindingAppURLDescriptor:0,mobile/DataBindings.cpx
+#:__EPILOG__:
+oracle.adf.library.rc.connections.CAServiceStrategy ADF_Connections
+oracle.adf.library.rc.bindingapp.BindingAppServiceStrategy ADF_BindingApp

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="SaveDeviceTokenPageDef"
+                Package="SaveDeviceToken">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="GCMService" id="GCMServiceIterator"/>
+    <accessorIterator MasterBinding="GCMServiceIterator" Binds="persistGCMUser_parameters" RangeSize="25"
+                      DataControl="GCMService" BeanClass="GCMService.Types.persistGCMUser"
+                      id="persistGCMUser_parametersIterator"/>
+    <accessorIterator MasterBinding="persistGCMUser_parametersIterator" Binds="gcmUser" RangeSize="25"
+                      DataControl="GCMService" BeanClass="GCMService.Types.persistGCMUser.gcmUser"
+                      id="gcmUserIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="gcmUserIterator" id="applicationId">
+      <AttrNames>
+        <Item Value="applicationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="gcmUserIterator" id="username">
+      <AttrNames>
+        <Item Value="username"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="gcmUserIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="gcmUserIterator" id="deviceToken">
+      <AttrNames>
+        <Item Value="deviceToken"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="gcmUserIterator" id="deviceType">
+      <AttrNames>
+        <Item Value="deviceType"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="persistGCMUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="persistGCMUser"
+                  IsViewObjectMethod="false" DataControl="GCMService" InstanceName="data.GCMService"
+                  ReturnName="data.GCMService.methodResults.persistGCMUser_GCMService_persistGCMUser_result">
+      <NamedData NDName="gcmUser" NDValue="${bindings.gcmUserIterator.currentRow.dataProvider}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

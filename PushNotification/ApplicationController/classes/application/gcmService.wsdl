@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:gcmService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:gcmService">
+  <types>
+    <xsd:schema targetNamespace="urn:gcmService">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+      <xsd:complexType name="GCMUser">
+        <xsd:all>
+          <xsd:element name="applicationId" type="xsd:string"/>
+          <xsd:element name="username" type="xsd:string"/>
+          <xsd:element name="email" type="xsd:string"/>
+          <xsd:element name="deviceToken" type="xsd:string"/>
+          <xsd:element name="deviceType" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="GCMResponse">
+        <xsd:all>
+          <xsd:element name="response" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="persistGCMUserRequest">
+    <part name="gcmUser" type="tns:GCMUser"/>
+  </message>
+  <message name="persistGCMUserResponse">
+    <part name="return" type="tns:GCMResponse"/>
+  </message>
+  <portType name="gcmServicePortType">
+    <operation name="persistGCMUser">
+      <documentation/>
+      <input message="tns:persistGCMUserRequest"/>
+      <output message="tns:persistGCMUserResponse"/>
+    </operation>
+  </portType>
+  <binding name="gcmServiceBinding" type="tns:gcmServicePortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="persistGCMUser">
+      <soap:operation style="rpc" soapAction="urn:gcmService#persistGCMUser"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:gcmService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:gcmService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="gcmService">
+    <port name="gcmServicePort" binding="tns:gcmServiceBinding">
+      <soap:address location="http://localhost:7101/PushNotification-ApplicationController-context-root/GCMServiceService"/>
+    </port>
+  </service>
+</definitions>

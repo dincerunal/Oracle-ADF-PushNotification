@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.64.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/SaveDeviceToken/SaveDeviceToken.amx" usageId="mobile_SaveDeviceTokenPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="mobile_SaveDeviceTokenPageDef" path="SaveDeviceToken.SaveDeviceTokenPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="GCMService" path="application.GCMService"/>
+  </dataControlUsages>
+</Application>

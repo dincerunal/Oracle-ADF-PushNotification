@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.2.64.36" id="GCMService" Package="application"
+          BeanClass="application.GCMService" isJavaBased="false">
+  <AccessorAttribute id="persistGCMUser_parameters" IsCollection="false" BeanClass="GCMService.Types.persistGCMUser"/>
+  <MethodAccessor IsCollection="false" Type="application.GCMService.persistGCMUser"
+                  BeanClass="application.GCMService.persistGCMUser" id="persistGCMUser" ReturnNodeName="Return">
+    <ParameterInfo id="gcmUser" Type="java.lang.Object" isStructured="false">
+      <Properties>
+        <Property Name="__SET_INITIAL_VALUE" Value="true"/>
+      </Properties>
+    </ParameterInfo>
+  </MethodAccessor>
+</JavaBean>
